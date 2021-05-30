@@ -15,14 +15,12 @@ timezone: Australia/Sydney
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # --------------------------
-title: Chirpy                          # the main title
+title: Anuradha Wickramarachchi                          # the main title
 
-tagline: A text-focused Jekyll theme   # it will display as the sub-title
+tagline: Welcome to my website!   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, portfolio, sidebar,
-  bootstrap Jekyll theme with responsive web design
-  and focuses on text presentation.
+  Hi, This is my personal website where I showcase my work.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://anuradhawick.github.io'
@@ -31,7 +29,7 @@ github:
   username: anuradhawick             # change to your github username
 
 twitter:
-  username: twitter_username            # change to your twitter username
+  username: anuradhawick            # change to your twitter username
 
 social:
   # Change to your full name.
@@ -40,11 +38,11 @@ social:
   email: anuradhawick@gmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/username       # change to your github homepage
+    - https://twitter.com/anuradhawick      # change to your twitter homepage
+    - https://github.com/anuradhawick       # change to your github homepage
     # Uncomment below to add more social links
-    # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    # - https://www.facebook.com/anuradha.wickramarachchi
+    - https://www.linkedin.com/in/anuradhawick
 
 google_site_verification: google_meta_tag_verification # change to your verification string
 # --------------------------
@@ -77,7 +75,7 @@ theme_mode:   # [light|dark]
 img_cdn: ''
 
 # the avatar on sidebar, support local or CORS resources
-avatar: https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/commons/avatar.jpg
+avatar: /assets/images/me.jpg
 
 # boolean type, the global switch for ToC in posts.
 toc: true
