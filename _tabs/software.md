@@ -42,6 +42,7 @@ Code availalbe at [Github](https://github.com/anuradhawick/PlasLR){:target="_bla
 <hr/>
 
 ## GraphPlas
+<img src="https://github.com/anuradhawick/GraphPlas/raw/master/GraphPlas.png" alt="GraphPlas logo" style="width:300px;"/>
 
 This tool enables improvement of plasmid classification of NGS assemblies using assembly graph. 
 
