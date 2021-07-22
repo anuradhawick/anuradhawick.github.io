@@ -7,8 +7,14 @@ theme: jekyll-theme-chirpy
 # change below value to '/projectname'.
 baseurl: ''
 
-# the HTML language tag › https://www.w3.org/International/questions/qa-choosing-language-tags
-lang: en-US
+# The language of the site layout › http://www.lingoes.net/en/translator/langcode.htm
+# Go to folder '_data/locales' to check the available language options
+lang: en
+
+# The lang attribute of HTML › http://www.lingoes.net/en/translator/langcode.htm
+# We can specify a language different from the layout of the content.
+# If it is not assigned, the site will use the value of 'lang' instead.
+content_lang: ''
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
 timezone: Australia/Sydney
@@ -162,3 +168,6 @@ exclude:
 #   permalinks:
 #     tag: /tags/:name/
 #     category: /categories/:name/
+
+# Outdated configuration warning
+outdated: '-- Missing configuration HAHA! --'
