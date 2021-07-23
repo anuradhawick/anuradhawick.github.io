@@ -3,9 +3,16 @@ layout: page
 # The Home page layout
 ---
 
-<h2>G'day!</h2>
+<h2 class="h1">G'day!</h2>
 
-<h3>Welcome aboard :)</h3>
+<strong>
+  <em class="">I am currently a PhD student (Final year) at ANU Australia. I primarily work in computational biology and bioinformatics, applying computational/machine learning methods for metagenomics binning.</em>
+</strong>
+<br>
+<br>
+<strong>
+  <em class="">Open for collaborations, happy to explore novel approachs and read others (or your) work. <a href="/about">Get in touch here!</a></em>
+</strong>
 
 {% assign pinned = site.posts | where: "pin", "true" %}
 {% assign default = site.posts | where_exp: "item", "item.pin != true" %}

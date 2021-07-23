@@ -23,7 +23,7 @@ timezone: Australia/Sydney
 # --------------------------
 title: Anuradha Wickramarachchi                          # the main title
 
-tagline: Welcome to my website!   # it will display as the sub-title
+tagline: PhD Student, CECS, ANU   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   Hi, This is my personal website where I showcase my work.
