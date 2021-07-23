@@ -19,6 +19,18 @@ Researcher profile at [Google Scholar 🎓](https://scholar.google.com.au/citati
 
 Checkout the latest [CV 📄](/assets/files/CV_Anuradha.pdf){:target="_blank"}
 
+## Contact Details 📱 
+
+* Email - personal: [anuradhawick@gmail.com](mailto:anuradhawick@gmail.com) 
+* Email - school: [anuradha.wickramarachchi@anu.edu.au](mailto:anuradha.wickramarachchi@anu.edu.au) 
+* Tel: [+61 (045) 1993 505](tel:+61451993505)
+* LinkedIn: [anuradhawick](https://www.linkedin.com/in/anuradhawick/){:target="_blank"}
+* Twitter: [@anuradhawick](https://twitter.com/Anuradhawick){:target="_blank"}
+* Facebook: [anuradha.sanjeewa](https://www.facebook.com/anuradha.sanjeewa){:target="_blank"}
+
+
+## Github Stats 📈 
+
 ![Anuradha's github stats](https://github-readme-stats.vercel.app/api?username=anuradhawick&show_icons=true&theme=prussian)
 
 ## I Love Research 🔬

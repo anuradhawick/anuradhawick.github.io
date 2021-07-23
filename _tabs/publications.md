@@ -10,9 +10,15 @@ order: 1
 The following list of work has been undertaken during the period of 2018-August to present as a part of PhD candidature at Australian National University.
 <hr/>
 
-### LRBinner (In-press) 2021
+### LRBinner: Binning Long Reads in Metagenomics Datasets
+> **Anuradha Wickramarachchi**, Yu Lin
+(21st International Workshop on Algorithms in Bioinformatics (WABI 2021))
+DOI: [10.4230/LIPIcs.WABI.2021.11](https://doi.org/10.4230/LIPIcs.WABI.2021.11){:target="_blank"}
 
-### PlasLR (Under review) 2021
+### PlasLR Enables Adaptation of Plasmid Prediction for Error-Prone Long Reads (preprint available)
+>  **Anuradha Wickramarachchi**,  Vijini Mallawaarachchi, Lianrong Pu, Yu Lin
+(14th Great Lakes Bioinformatics (GLBIO) conference)
+DOI: [10.1101/2021.06.14.448306](https://doi.org/10.1101/2021.06.14.448306){:target="_blank"}
 
 ### GraphPlas: Refined Classification of Plasmid Sequences using Assembly Graphs
 > **Anuradha Wickramarachchi**, Yu Lin

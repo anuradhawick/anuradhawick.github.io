@@ -10,6 +10,16 @@ There are few software that I have developed to help me with my work. Some have 
 
 # Bioinformatics Related Software
 
+**Notice** Seq2CovVec (coverage vectorization program is being developed. Soon to be ready! check [Github](https://github.com/anuradhawick/seq2covvec){:target="_blank"})
+
+<hr/>
+
+## LRBinner
+
+Accepted for presentation at [WABI 2021](http://www.acm-bcb.org/WABI/2021/){:target="_blank"}. This work published at [10.4230/LIPIcs.WABI.2021.11](https://doi.org/10.4230/LIPIcs.WABI.2021.11){:target="_blank"}
+
+Code is available at [Github](https://github.com/anuradhawick/LRBinner){:target="_blank"}.
+
 <hr/>
 
 ## MetaBCC-LR
@@ -20,12 +30,6 @@ This is the first long read binner that is 100% reference-free and to use both c
 This piece of work has been presented at ISMB 2020 and published in [Bioinformatics](https://doi.org/10.1093/bioinformatics/btaa441){:target="_blank"}. 
 
 Code is available at [Github](https://github.com/anuradhawick/MetaBCC-LR){:target="_blank"}.
-
-<hr/>
-
-## LRBinner
-
-Accepted for presentation at [WABI 2021](http://www.acm-bcb.org/WABI/2021/){:target="_blank"} soon to be published at [LIPICS](https://drops.dagstuhl.de/opus/institut_lipics.php){:target="_blank"}
 
 <hr/>
 
