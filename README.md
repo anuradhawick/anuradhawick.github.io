@@ -85,22 +85,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 ## GitHub Pages Deployment (CI/CD)
 
-The repository includes a ready-to-use GitHub Actions workflow at [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
+The repository includes an automated GitHub Actions workflow at [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) that automatically builds the site and pushes to the `gh-pages` branch.
 
-### First-Time Repository Setup:
-1. Initialize git and push your repository to GitHub:
-   ```bash
-   git init
-   git add .
-   git commit -m "Migrate site to Astro"
-   git branch -M main
-   git remote add origin https://github.com/<your-username>/<your-repo-name>.git
-   git push -u origin main
-   ```
-2. In your GitHub repository:
-   - Go to **Settings** &rarr; **Pages**.
-   - Under **Build and deployment** &gt; **Source**, select **GitHub Actions**.
-3. Any push to `main` will now automatically build and deploy the site!
+### One-Time GitHub Settings:
+1. In your GitHub repository, go to **Settings** &rarr; **Pages**.
+2. Under **Build and deployment**:
+   - **Source**: Select **Deploy from a branch**.
+   - **Branch**: Select **`gh-pages`** and folder **`/ (root)`**.
+3. Under **Settings** &rarr; **Actions** &rarr; **General**:
+   - Under **Workflow permissions**, ensure **"Read and write permissions"** is selected (this allows the GitHub Actions bot to push the built files to the `gh-pages` branch).
+4. Any push to `main` will now automatically build and deploy the site!
 
 ---
 
@@ -108,7 +102,7 @@ The repository includes a ready-to-use GitHub Actions workflow at [`.github/work
 
 When you are ready to point your custom domain `anuradhawick.com` to GitHub Pages:
 1. In your GitHub repository, go to **Settings** &rarr; **Pages** &rarr; **Custom domain**.
-2. Enter `anuradhawick.com` and save (GitHub will automatically commit a `CNAME` file or you can place one in `public/CNAME`).
+2. Enter `anuradhawick.com` and save (or create `public/CNAME` containing `anuradhawick.com`).
 3. Update your DNS settings at your domain registrar:
    - Configure **A records** pointing to GitHub Pages IPs:
      - `185.199.108.153`
@@ -117,28 +111,6 @@ When you are ready to point your custom domain `anuradhawick.com` to GitHub Page
      - `185.199.111.153`
    - Configure a **CNAME record** for `www` pointing to `<your-username>.github.io`.
 4. Check **Enforce HTTPS** in GitHub Pages settings.
-
----
-
-## Architecture & Directory Structure
-
-```
-├── .github/workflows/deploy.yml # GitHub Actions CI/CD deployment
-├── public/
-│   ├── assets/uploads/          # Downloaded local images & PDF thesis
-│   └── wp-content/uploads/      # Backward-compatible URLs for historical backlinks
-├── src/
-│   ├── components/              # Header, Footer, SEO, ThemeToggle, ToolCard, BlogCard
-│   ├── content/
-│   │   └── blog/                # Markdown blog posts
-│   ├── layouts/                 # BaseLayout, BlogPostLayout
-│   ├── pages/                   # index, about, apps, templates, blog, legacy redirects
-│   ├── styles/global.css        # Tailwind styling & dark mode variables
-│   ├── utils/paths.ts           # URL path helper for portable deployments
-│   └── content.config.ts        # Content collection schema
-├── astro.config.mjs             # Astro & Tailwind & Sitemap configuration
-└── package.json                 # Project dependencies & scripts
-```
 
 ---
 
