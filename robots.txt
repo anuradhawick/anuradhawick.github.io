@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://anuradhawick.github.io/sitemap-index.xml
+Sitemap: https://anuradhawick.com/sitemap-index.xml
