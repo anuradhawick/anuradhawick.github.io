@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ToolCard from '../components/ToolCard.astro';
+---
+
+<BaseLayout
+  title="Software & Tools"
+  description="Open source software, bioinformatics algorithms, desktop applications, and developer tools created by Anuradha Wickramarachchi."
+>
+  <div class="space-y-12">
+    <!-- Header -->
+    <div class="pb-6 border-b border-[var(--border-color)]">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-[var(--text-primary)]">
+        Software & Tools
+      </h1>
+      <p class="text-base sm:text-lg text-[var(--text-secondary)] mt-2">
+        A collection of open source software, desktop applications, bioinformatics algorithms, and developer utilities.
+      </p>
+    </div>
+
+    <!-- Signature Tools -->
+    <section>
+      <div class="mb-6">
+        <h2 class="text-2xl font-bold text-[var(--text-primary)]">Signature Tools</h2>
+        <p class="text-sm text-[var(--text-secondary)]">Highlighted desktop and web applications</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <ToolCard
+          title="Clipper"
+          description="A versatile clipboard management and note-taking application designed specifically for developers. Runs natively on macOS and Linux, leveraging Tauri for a lightweight and secure footprint."
+          image="/assets/uploads/icon.png"
+          githubUrl="https://github.com/anuradhawick/clipper"
+          tags={["Tauri", "Rust", "macOS", "Linux"]}
+          featured={true}
+        />
+        <ToolCard
+          title="Kmertools"
+          description="A k-mer based feature extraction tool designed to support metagenomics analysis and fast sequence clustering. Enables high-throughput processing of large genomic datasets."
+          image="/assets/uploads/kmertools-1.jpg"
+          githubUrl="https://github.com/anuradhawick/kmertools"
+          tags={["Bioinformatics", "k-mers", "Genomics"]}
+          featured={true}
+        />
+        <ToolCard
+          title="TypeFaster"
+          description="A minimalist, snappy typing training web application created to help you hone your touch-typing speed and accuracy."
+          image="/assets/uploads/logo.webp"
+          githubUrl="https://github.com/anuradhawick/typefaster"
+          liveUrl="https://typefaster.anuradhawick.com"
+          tags={["Angular", "TypeScript", "Web App"]}
+          featured={true}
+        />
+      </div>
+    </section>
+
+    <!-- Research Software & Metagenomics -->
+    <section class="pt-6 border-t border-[var(--border-color)]">
+      <div class="mb-6">
+        <h2 class="text-2xl font-bold text-[var(--text-primary)]">Metagenomics & Plasmid Recovery</h2>
+        <p class="text-sm text-[var(--text-secondary)]">Algorithms and models developed during PhD research at the Australian National University</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <ToolCard
+          title="MetaBCC-LR"
+          description="First long-read metagenomics binning tool introducing the k-mer coverage histogram concept. Uses t-SNE for dimension reduction and DBSCAN for clustering."
+          githubUrl="https://github.com/metagentools/MetaBCC-LR"
+          tags={["PhD", "t-SNE", "DBSCAN", "Python"]}
+        />
+        <ToolCard
+          title="LRBinner"
+          description="Unified composition and coverage binning using deep auto-encoders combined with an innovative clustering algorithm for long reads."
+          githubUrl="https://github.com/anuradhawick/lrbinner"
+          tags={["Auto-encoders", "Deep Learning", "Binning"]}
+        />
+        <ToolCard
+          title="OBLR"
+          description="Read-overlap graph binning for long reads using UMAP cluster detection and GraphSAGE representation learning, accelerated with CUDA RAPIDS."
+          githubUrl="https://github.com/anuradhawick/oblr"
+          tags={["Graph Neural Networks", "CUDA", "RAPIDS"]}
+        />
+      </div>
+    </section>
+
+    <!-- Vector Processing & Sequence Mining -->
+    <section class="pt-6 border-t border-[var(--border-color)]">
+      <div class="mb-6">
+        <h2 class="text-2xl font-bold text-[var(--text-primary)]">Sequence Vectorization & High Performance Tools</h2>
+        <p class="text-sm text-[var(--text-secondary)]">Optimized parallel tools using memory-mapped I/O</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <ToolCard
+          title="Seq2Vec"
+          description="Converts metagenomics long reads or contigs into oligo-nucleotide frequency vectors. Engineered for speed and robustness using memory-mapped output files to operate in parallel."
+          githubUrl="https://github.com/anuradhawick/seq2vec"
+          tags={["C++", "Oligo-nucleotides", "Parallel I/O"]}
+        />
+        <ToolCard
+          title="Seq2CovVec"
+          description="Generates coverage vectors for long reads and contigs based on the k-mer coverage histogram methodology introduced in MetaBCC-LR."
+          githubUrl="https://github.com/anuradhawick/seq2covvec"
+          tags={["C++", "Coverage Vectors", "Bioinformatics"]}
+        />
+      </div>
+    </section>
+
+    <!-- Computer Vision, Cloud & CUDA -->
+    <section class="pt-6 border-t border-[var(--border-color)]">
+      <div class="mb-6">
+        <h2 class="text-2xl font-bold text-[var(--text-primary)]">Computer Vision, Cloud & GPU Optimization</h2>
+        <p class="text-sm text-[var(--text-secondary)]">Developer utilities, serverless templates, and CUDA implementations</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <ToolCard
+          title="Object Annotation Maker"
+          description="Automated dataset bootstrapping tool for training object detectors by synthesizing target images across variable backgrounds."
+          githubUrl="https://github.com/anuradhawick/Object-Annotation-Maker"
+          tags={["Computer Vision", "Data Augmentation", "Python"]}
+        />
+        <ToolCard
+          title="Serverless Boilerplate"
+          description="Simplistic, production-ready AWS Lambda serverless boilerplate for rapid prototyping and cloud web service deployment (used in vinyl.lk)."
+          githubUrl="https://github.com/anuradhawick/aws-lambda-serverless-boilerplate"
+          tags={["AWS Lambda", "Serverless", "Python"]}
+        />
+        <ToolCard
+          title="CUDA K-Mer Counting & Algorithms"
+          description="High-performance GPU implementations of k-mer counting, biological data analysis, and the Needleman-Wunsch sequence alignment algorithm."
+          githubUrl="https://github.com/anuradhawick/CUDA-k-mer-counting"
+          tags={["CUDA", "C++", "GPU Computing"]}
+        />
+      </div>
+    </section>
+  </div>
+</BaseLayout>

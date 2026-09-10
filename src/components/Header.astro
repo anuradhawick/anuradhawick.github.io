@@ -1,0 +1,94 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+import { getRelativePath } from '../utils/paths';
+
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { href: getRelativePath('/'), raw: '/', label: 'Home' },
+  { href: getRelativePath('/about'), raw: '/about', label: 'About' },
+  { href: getRelativePath('/apps'), raw: '/apps', label: 'Tools' },
+  { href: getRelativePath('/templates'), raw: '/templates', label: 'Templates' },
+  { href: getRelativePath('/blog'), raw: '/blog', label: 'Blog' },
+];
+
+const isActive = (raw: string) => {
+  if (raw === '/') {
+    return currentPath === getRelativePath('/') || currentPath === '/';
+  }
+  return currentPath.includes(raw);
+};
+---
+
+<header class="sticky top-0 z-40 w-full backdrop-blur-md bg-[var(--bg-primary)]/85 border-b border-[var(--border-color)]">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <!-- Brand / Title -->
+    <a href={getRelativePath('/')} class="flex items-center gap-2.5 font-bold text-lg text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors">
+      <img src={getRelativePath('/assets/uploads/me-removebg.png')} alt="Anuradha" class="w-8 h-8 rounded-full border border-[var(--border-color)] object-cover bg-slate-200 dark:bg-slate-800" />
+      <span>Anuradha Wick</span>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+      {navLinks.map(({ href, raw, label }) => (
+        <a
+          href={href}
+          class={`transition-colors py-1 ${
+            isActive(raw)
+              ? 'text-[var(--accent-color)] border-b-2 border-[var(--accent-color)] font-semibold'
+              : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+          }`}
+        >
+          {label}
+        </a>
+      ))}
+      <ThemeToggle />
+    </nav>
+
+    <!-- Mobile Menu Button & Theme Toggle -->
+    <div class="flex items-center gap-2 md:hidden">
+      <ThemeToggle />
+      <button
+        id="mobile-menu-btn"
+        type="button"
+        aria-label="Toggle navigation menu"
+        class="p-2 rounded-lg border border-[var(--border-color)] bg-[var(--bg-secondary)] text-[var(--text-secondary)]"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-[var(--border-color)] bg-[var(--bg-primary)] px-4 pt-2 pb-4 space-y-2">
+    {navLinks.map(({ href, raw, label }) => (
+      <a
+        href={href}
+        class={`block py-2 px-3 rounded-md text-base ${
+          isActive(raw)
+            ? 'bg-[var(--bg-secondary)] text-[var(--accent-color)] font-semibold'
+            : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
+        }`}
+      >
+        {label}
+      </a>
+    ))}
+  </div>
+</header>
+
+<script>
+  function setupMobileMenu() {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    if (!btn || !menu) return;
+
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  }
+
+  setupMobileMenu();
+  document.addEventListener('astro:after-swap', setupMobileMenu);
+</script>

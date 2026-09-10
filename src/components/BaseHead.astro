@@ -1,0 +1,72 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonicalURL?: string;
+  type?: 'website' | 'article';
+}
+
+const {
+  title,
+  description,
+  image = '/assets/uploads/me-removebg.png',
+  canonicalURL = Astro.url.href,
+  type = 'website'
+} = Astro.props;
+
+const siteTitle = title.includes('Anuradha') ? title : `${title} | Anuradha Wickramarachchi`;
+const resolvedImage = new URL(image, Astro.site || 'https://anuradhawick.com').href;
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" type="image/png" href="/assets/uploads/me-removebg.png" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{siteTitle}</title>
+<meta name="title" content={siteTitle} />
+<meta name="description" content={description} />
+<meta name="author" content="Anuradha Wickramarachchi" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={siteTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={resolvedImage} />
+<meta property="og:site_name" content="Anuradha Wickramarachchi" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={siteTitle} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={resolvedImage} />
+
+<!-- RSS Feed Auto-Discovery -->
+<link rel="alternate" type="application/rss+xml" title="Anuradha Wickramarachchi's Blog RSS Feed" href="/rss.xml" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+
+<!-- Dark Mode Initialization Script (Prevents Flash of Wrong Theme) -->
+<script is:inline>
+  const theme = (() => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme');
+    }
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+    return 'light';
+  })();
+  if (theme === 'dark') {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+</script>

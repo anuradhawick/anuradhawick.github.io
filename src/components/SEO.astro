@@ -1,0 +1,77 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  type?: 'website' | 'article';
+  publishDate?: Date;
+  updatedDate?: Date;
+  image?: string;
+}
+
+const {
+  title,
+  description,
+  type = 'website',
+  publishDate,
+  updatedDate,
+  image = '/assets/uploads/me-removebg.png'
+} = Astro.props;
+
+const siteUrl = Astro.site?.origin || 'https://anuradhawick.com';
+const resolvedImage = new URL(image, siteUrl).href;
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Anuradha Wickramarachchi',
+  url: siteUrl,
+  image: `${siteUrl}/assets/uploads/me-removebg.png`,
+  jobTitle: 'Solutions Architect & Research Software Engineer',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'AML3D / ex-CSIRO'
+  },
+  alumniOf: [
+    {
+      '@type': 'CollegeOrUniversity',
+      name: 'Australian National University'
+    },
+    {
+      '@type': 'CollegeOrUniversity',
+      name: 'University of Moratuwa'
+    }
+  ],
+  sameAs: [
+    'https://www.linkedin.com/in/anuradhawick/',
+    'https://github.com/anuradhawick',
+    'https://scholar.google.com.au/citations?user=u-rFXwUAAAAJ&hl=en',
+    'https://bsky.app/profile/anuradhawick.bsky.social',
+    'https://anuradhawick.medium.com'
+  ]
+};
+
+const articleSchema = type === 'article' && publishDate ? {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description: description,
+  image: resolvedImage,
+  datePublished: publishDate.toISOString(),
+  dateModified: (updatedDate || publishDate).toISOString(),
+  author: {
+    '@type': 'Person',
+    name: 'Anuradha Wickramarachchi',
+    url: siteUrl
+  },
+  publisher: {
+    '@type': 'Person',
+    name: 'Anuradha Wickramarachchi',
+    url: siteUrl
+  }
+} : null;
+---
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+{articleSchema && (
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+)}

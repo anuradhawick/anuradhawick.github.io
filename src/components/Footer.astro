@@ -1,0 +1,24 @@
+---
+import { getRelativePath } from '../utils/paths';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-[var(--border-color)] bg-[var(--bg-secondary)] mt-20 py-10 text-sm text-[var(--text-muted)]">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div>
+      <p>&copy; {year} Anuradha Wickramarachchi. All rights reserved.</p>
+      <p class="text-xs mt-1">Built with Astro &middot; Published via GitHub Pages</p>
+    </div>
+
+    <!-- Social links -->
+    <div class="flex items-center gap-4 text-xs">
+      <a href="https://github.com/anuradhawick" target="_blank" rel="noreferrer noopener" class="hover:text-[var(--accent-color)] transition-colors">GitHub</a>
+      <a href="https://www.linkedin.com/in/anuradhawick/" target="_blank" rel="noreferrer noopener" class="hover:text-[var(--accent-color)] transition-colors">LinkedIn</a>
+      <a href="https://scholar.google.com.au/citations?user=u-rFXwUAAAAJ&hl=en" target="_blank" rel="noreferrer noopener" class="hover:text-[var(--accent-color)] transition-colors">Scholar</a>
+      <a href="https://bsky.app/profile/anuradhawick.bsky.social" target="_blank" rel="noreferrer noopener" class="hover:text-[var(--accent-color)] transition-colors">Bluesky</a>
+      <a href="mailto:info@anuradhawick.com" class="hover:text-[var(--accent-color)] transition-colors">Email</a>
+      <a href={getRelativePath('/rss.xml')} class="hover:text-[var(--accent-color)] transition-colors">RSS</a>
+    </div>
+  </div>
+</footer>

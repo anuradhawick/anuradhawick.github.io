@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getRelativePath } from '../utils/paths';
+---
+
+<BaseLayout
+  title="About Anuradha Wickramarachchi"
+  description="Biography, research background, education, publications, and contact information for Anuradha Wickramarachchi."
+>
+  <div class="max-w-3xl mx-auto">
+    <!-- Header with Profile Photo -->
+    <div class="flex flex-col sm:flex-row items-center gap-6 pb-8 border-b border-[var(--border-color)]">
+      <img
+        src={getRelativePath('/assets/uploads/me-removebg.png')}
+        alt="Anuradha Wickramarachchi"
+        class="w-32 h-32 rounded-2xl border-2 border-[var(--border-color)] p-2 bg-[var(--bg-secondary)] shrink-0 object-contain shadow-sm"
+      />
+      <div>
+        <h1 class="text-3xl font-extrabold text-[var(--text-primary)]">
+          Hi! I am Anuradha 😃
+        </h1>
+        <p class="text-base text-[var(--text-secondary)] mt-2 leading-relaxed">
+          Solutions Architect, Research Software Engineer, and PhD graduate from the Australian National University. Passionate about exploratory genomics, machine learning modelling, and building robust cloud systems.
+        </p>
+      </div>
+    </div>
+
+    <!-- Quick Download & CV Badges -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 my-6">
+      <a
+        href={getRelativePath('/assets/uploads/anu_thesis.pdf')}
+        download
+        class="flex items-center justify-center gap-2 p-3 rounded-xl border border-[var(--border-color)] bg-[var(--card-bg)] hover:border-[var(--accent-color)] text-xs font-semibold text-[var(--text-primary)] transition-all shadow-sm"
+      >
+        <svg class="w-4 h-4 text-[var(--accent-color)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+        </svg>
+        Download PhD Thesis (PDF)
+      </a>
+      <a
+        href="https://cv.anuradhawick.com"
+        target="_blank"
+        rel="noreferrer noopener"
+        class="flex items-center justify-center gap-2 p-3 rounded-xl border border-[var(--border-color)] bg-[var(--card-bg)] hover:border-[var(--accent-color)] text-xs font-semibold text-[var(--text-primary)] transition-all shadow-sm"
+      >
+        <svg class="w-4 h-4 text-[var(--accent-color)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+        </svg>
+        View CV (cv.anuradhawick.com)
+      </a>
+      <a
+        href="https://scholar.google.com.au/citations?user=u-rFXwUAAAAJ&hl=en"
+        target="_blank"
+        rel="noreferrer noopener"
+        class="flex items-center justify-center gap-2 p-3 rounded-xl border border-[var(--border-color)] bg-[var(--card-bg)] hover:border-[var(--accent-color)] text-xs font-semibold text-[var(--text-primary)] transition-all shadow-sm"
+      >
+        <svg class="w-4 h-4 text-[var(--accent-color)]" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+        </svg>
+        Google Scholar Profile
+      </a>
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="prose">
+      <p>
+        I am currently an Engineer at <strong>AML3D</strong>, an ex-<strong>CSIRO</strong> researcher, and received my PhD from the <strong>Australian National University (ANU)</strong>. My core domain of research is Bioinformatics and Computational Biology. I love exploratory genomics research, statistical analysis, and modelling machine learning algorithms. But above all, I love coding 😃.
+      </p>
+
+      <h2 id="contact-details">Contact Details 📱</h2>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:info@anuradhawick.com">info@anuradhawick.com</a></li>
+        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/anuradhawick/" target="_blank" rel="noreferrer noopener">anuradhawick</a></li>
+        <li><strong>BlueSky:</strong> <a href="https://bsky.app/profile/anuradhawick.bsky.social" target="_blank" rel="noreferrer noopener">@anuradhawick.bsky.social</a></li>
+        <li><strong>CV Code Repository:</strong> <a href="https://github.com/anuradhawick/cv" target="_blank" rel="noreferrer noopener">github.com/anuradhawick/cv</a></li>
+      </ul>
+
+      <h2 id="research">I Love Research 🔬</h2>
+      <p>
+        I love doing research that is computationally challenging and requires novel algorithmic thinking. I am an enthusiastic blogger and frequently write about new things I discover as I conduct research. Check out my thoughts on <a href="https://anuradhawick.medium.com/" target="_blank" rel="noreferrer noopener">Medium</a> and on this site's <a href={getRelativePath('/blog')}>Blog</a>!
+      </p>
+
+      <h2>I am a Hobbyist DIY'er ⚡️🔋</h2>
+      <p>
+        In my free time, I like to tinker with <strong>Jetson Nano</strong>, <strong>Raspberry Pi</strong>, and microcontrollers/SoCs like <strong>Onion Omega</strong>, <strong>ESP32/ESP8266</strong>, and <strong>Arduino</strong>.
+      </p>
+      <p>
+        I also enjoy self-defined machine learning projects and compute optimization tasks on <strong>CUDA</strong>. You will find many of them on my GitHub profile and Gists.
+      </p>
+
+      <h2 id="education">Education 👨🏽‍🎓</h2>
+      <ul>
+        <li><strong>CSIRO (Australia's National Science Agency):</strong> Designed and engineered population-scale software systems for genomics and healthcare.</li>
+        <li><strong>Australian National University (ANU):</strong> PhD in Computer Science from the School of Computing, College of Engineering and Computer Science. Spent 3.5 years in Canberra studying metagenomics binning models.</li>
+        <li><strong>University of Moratuwa, Sri Lanka:</strong> BSc (Hons) in Computer Science and Engineering, securing a GPA of 4.0+ (out of 4.2) along with multiple academic and non-academic honours.</li>
+        <li><strong>Island Rank 68th:</strong> Placed 68th all-island (4th in Gampaha district) in the physical sciences stream of the Sri Lankan GCE Advanced Level examination.</li>
+      </ul>
+
+      <h2>From Sri Lanka 🇱🇰 and Found Home in Australia 🇦🇺</h2>
+      <p>
+        My hometown is located in Gampaha District, a peaceful non-urban town. I grew up playing on grass and mud, cherishing days spent with my brother and neighborhood friends. A simple village life that wasn't rural and definitely wasn't urban. Even today, I am inspired by simple livelihoods that offer plenty of time for free thought and creativity.
+      </p>
+      <p>
+        Now that my wife, <strong>Vijini</strong>, and I are based in Australia, we roam around the continent whenever we get the chance.
+      </p>
+    </div>
+
+    <!-- Travel Callout -->
+    <div class="mt-8 p-6 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-secondary)] flex flex-col sm:flex-row items-center gap-6">
+      <img src={getRelativePath('/assets/uploads/me_viji.jpg')} alt="Vijini and Anuradha" class="w-36 h-36 rounded-xl object-cover shrink-0" />
+      <div>
+        <h3 class="text-lg font-bold text-[var(--text-primary)]">I Love to Travel 🏝</h3>
+        <p class="text-sm text-[var(--text-secondary)] mt-1 leading-relaxed">
+          Vijini and I document our road trips, national park adventures, and overseas explorations on our dedicated travel blog.
+        </p>
+        <a
+          href="https://thearachchistyle.com/"
+          target="_blank"
+          rel="noreferrer noopener"
+          class="inline-flex items-center gap-2 mt-3 text-xs font-semibold text-[var(--accent-color)] hover:underline"
+        >
+          Visit The Arachchi Style &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

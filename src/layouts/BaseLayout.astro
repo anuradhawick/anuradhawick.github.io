@@ -1,0 +1,40 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import SEO from '../components/SEO.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  publishDate?: Date;
+  updatedDate?: Date;
+}
+
+const {
+  title,
+  description = "Welcome to Anuradha Wickramarachchi's personal website - Solutions Architect, Researcher, and Software Engineer.",
+  image = '/assets/uploads/me-removebg.png',
+  type = 'website',
+  publishDate,
+  updatedDate
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} image={image} type={type} />
+    <SEO title={title} description={description} image={image} type={type} publishDate={publishDate} updatedDate={updatedDate} />
+  </head>
+  <body class="min-h-screen flex flex-col bg-[var(--bg-primary)] text-[var(--text-primary)] antialiased">
+    <Header />
+    <main class="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 py-10">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

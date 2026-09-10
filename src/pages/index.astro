@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogCard from '../components/BlogCard.astro';
+import ToolCard from '../components/ToolCard.astro';
+import { getRelativePath } from '../utils/paths';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+const recentPosts = posts
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+
+<BaseLayout title="Anuradha Wickramarachchi | Solutions Architect & Researcher">
+  <!-- Hero Section -->
+  <section class="flex flex-col-reverse md:flex-row items-center justify-between gap-8 pb-12 border-b border-[var(--border-color)]">
+    <div class="flex-1 space-y-4 text-center md:text-left">
+      <div class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[var(--bg-tertiary)] text-[var(--accent-color)] border border-[var(--border-color)]">
+        Solutions Architect &middot; Researcher &middot; Bioinformatician
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-[var(--text-primary)]">
+        G'day! I'm Anuradha.
+      </h1>
+      <p class="text-base sm:text-lg text-[var(--text-secondary)] max-w-xl leading-relaxed">
+        I work as a solutions architect building bioinformatics products. I specialize in cloud-first computational biology, high-performance GPU algorithms, and machine learning models for genomics.
+      </p>
+
+      <!-- Quick Social & Contact Links -->
+      <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2 text-xs font-medium">
+        <a href="https://github.com/anuradhawick" target="_blank" rel="noreferrer noopener" class="px-3 py-1.5 rounded-lg border border-[var(--border-color)] bg-[var(--bg-secondary)] hover:border-[var(--accent-color)] transition-colors flex items-center gap-1.5">
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/anuradhawick/" target="_blank" rel="noreferrer noopener" class="px-3 py-1.5 rounded-lg border border-[var(--border-color)] bg-[var(--bg-secondary)] hover:border-[var(--accent-color)] transition-colors flex items-center gap-1.5">
+          LinkedIn
+        </a>
+        <a href="https://scholar.google.com.au/citations?user=u-rFXwUAAAAJ&hl=en" target="_blank" rel="noreferrer noopener" class="px-3 py-1.5 rounded-lg border border-[var(--border-color)] bg-[var(--bg-secondary)] hover:border-[var(--accent-color)] transition-colors flex items-center gap-1.5">
+          Google Scholar
+        </a>
+        <a href="https://bsky.app/profile/anuradhawick.bsky.social" target="_blank" rel="noreferrer noopener" class="px-3 py-1.5 rounded-lg border border-[var(--border-color)] bg-[var(--bg-secondary)] hover:border-[var(--accent-color)] transition-colors flex items-center gap-1.5">
+          Bluesky
+        </a>
+        <a href={getRelativePath('/about')} class="px-3 py-1.5 rounded-lg bg-[var(--accent-color)] text-white hover:opacity-90 transition-opacity font-semibold">
+          About Me &rarr;
+        </a>
+      </div>
+    </div>
+
+    <div class="relative shrink-0">
+      <div class="w-40 h-40 sm:w-48 sm:h-48 rounded-2xl overflow-hidden border-2 border-[var(--border-color)] shadow-lg bg-gradient-to-tr from-sky-500/10 to-indigo-500/10 p-2">
+        <img src={getRelativePath('/assets/uploads/me-removebg.png')} alt="Anuradha Wickramarachchi" class="w-full h-full object-contain" />
+      </div>
+    </div>
+  </section>
+
+  <!-- About Snapshot -->
+  <section class="py-12 border-b border-[var(--border-color)] space-y-6">
+    <div class="prose">
+      <p>
+        I did my PhD at the <strong>Australian National University (ANU)</strong>. My thesis was titled <em>"Models and algorithms for metagenomics binning and plasmid classification"</em>. I love reading algorithms, tinkering on single-board computers (SBCs), travelling, and gaming (PC/XBOX/PS). On holidays, I am either driving or cooking!
+      </p>
+      <p>
+        Previously, I worked at <strong>CSIRO</strong> (Australia's National Science Agency) with the <a href="https://bioinformatics.csiro.au" target="_blank" rel="noreferrer noopener">Transformational Bioinformatics Group</a>. In any case, happy to connect via <a href="https://www.linkedin.com/in/anuradhawick/" target="_blank" rel="noreferrer noopener">LinkedIn</a> as a fellow researcher, DIY'er, programming geek, or fellow human being!
+      </p>
+    </div>
+
+    <!-- Images Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 not-prose pt-4">
+      <figure class="rounded-xl overflow-hidden border border-[var(--border-color)] bg-[var(--bg-secondary)]">
+        <img src={getRelativePath('/assets/uploads/img_0257_original-1.jpg')} alt="ANU, Australia" class="w-full h-48 object-cover" loading="lazy" />
+        <figcaption class="p-3 text-xs text-[var(--text-muted)] text-center">Australian National University (ANU), Canberra</figcaption>
+      </figure>
+      <figure class="rounded-xl overflow-hidden border border-[var(--border-color)] bg-[var(--bg-secondary)]">
+        <img src={getRelativePath('/assets/uploads/img_0061.jpg')} alt="University of Moratuwa" class="w-full h-48 object-cover" loading="lazy" />
+        <figcaption class="p-3 text-xs text-[var(--text-muted)] text-center">University of Moratuwa, Sri Lanka (<a href="https://uom.lk/elect" target="_blank" rel="noreferrer noopener" class="underline">source</a>)</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Featured Software & Tools -->
+  <section class="py-12 border-b border-[var(--border-color)]">
+    <div class="flex items-center justify-between mb-6">
+      <div>
+        <h2 class="text-2xl font-bold text-[var(--text-primary)]">Featured Software</h2>
+        <p class="text-sm text-[var(--text-secondary)] mt-1">Tools and open source applications I've engineered</p>
+      </div>
+      <a href={getRelativePath('/apps')} class="text-sm font-semibold text-[var(--accent-color)] hover:underline">
+        View all tools &rarr;
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <ToolCard
+        title="Clipper"
+        description="A versatile clipboard management and note-taking application designed for developers. Built with Tauri for macOS and Linux."
+        image="/assets/uploads/icon.png"
+        githubUrl="https://github.com/anuradhawick/clipper"
+        tags={["Tauri", "Rust", "Desktop"]}
+        featured={true}
+      />
+      <ToolCard
+        title="Kmertools"
+        description="A k-mer based high-performance feature extraction tool designed for metagenomics analysis and genomic sequence mining."
+        image="/assets/uploads/kmertools-1.jpg"
+        githubUrl="https://github.com/anuradhawick/kmertools"
+        tags={["Bioinformatics", "Genomics", "k-mers"]}
+        featured={true}
+      />
+      <ToolCard
+        title="TypeFaster"
+        description="A clean, responsive typing speed trainer and web application built with Angular to level up your typing speed."
+        image="/assets/uploads/logo.webp"
+        githubUrl="https://github.com/anuradhawick/typefaster"
+        liveUrl="https://typefaster.anuradhawick.com"
+        tags={["Angular", "TypeScript", "Web App"]}
+        featured={true}
+      />
+    </div>
+  </section>
+
+  <!-- Recent Articles -->
+  <section class="py-12 border-b border-[var(--border-color)]">
+    <div class="flex items-center justify-between mb-6">
+      <div>
+        <h2 class="text-2xl font-bold text-[var(--text-primary)]">Recent Articles</h2>
+        <p class="text-sm text-[var(--text-secondary)] mt-1">Reflections on software, genomics, AI, and life</p>
+      </div>
+      <a href={getRelativePath('/blog')} class="text-sm font-semibold text-[var(--accent-color)] hover:underline">
+        View all posts &rarr;
+      </a>
+    </div>
+
+    <div class="space-y-4">
+      {recentPosts.map((post) => (
+        <BlogCard
+          title={post.data.title}
+          description={post.data.description}
+          pubDate={post.data.pubDate}
+          slug={post.id}
+          tags={post.data.tags}
+          heroImage={post.data.heroImage}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- Quote Section -->
+  <section class="py-10 text-center">
+    <blockquote class="text-lg font-medium italic text-[var(--text-secondary)] max-w-xl mx-auto">
+      &ldquo;The way to get started is to quit talking and begin doing.&rdquo;
+    </blockquote>
+    <cite class="block text-xs font-semibold text-[var(--text-muted)] mt-2 uppercase tracking-wider">
+      &mdash; Walt Disney
+    </cite>
+  </section>
+</BaseLayout>

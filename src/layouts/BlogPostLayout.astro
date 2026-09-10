@@ -1,0 +1,82 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { getRelativePath } from '../utils/paths';
+
+interface Props {
+  title: string;
+  description?: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  heroImage?: string;
+  tags?: string[];
+}
+
+const { title, description, pubDate, updatedDate, heroImage, tags = [] } = Astro.props;
+
+const formattedDate = pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+
+const resolvedHeroImage = heroImage ? getRelativePath(heroImage) : undefined;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  image={heroImage}
+  type="article"
+  publishDate={pubDate}
+  updatedDate={updatedDate}
+>
+  <article class="prose">
+    <header class="mb-8 not-prose">
+      <a href={getRelativePath('/blog')} class="inline-flex items-center gap-1 text-sm text-[var(--accent-color)] hover:underline mb-6 font-medium">
+        &larr; Back to all articles
+      </a>
+      
+      <div class="flex items-center gap-3 text-xs text-[var(--text-muted)] mb-3">
+        <time datetime={pubDate.toISOString()}>{formattedDate}</time>
+        {tags.length > 0 && (
+          <span class="flex gap-1.5">
+            {tags.map(tag => (
+              <span class="px-2 py-0.5 rounded-full bg-[var(--bg-tertiary)] text-[var(--text-secondary)] font-medium">
+                #{tag}
+              </span>
+            ))}
+          </span>
+        )}
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight">
+        {title}
+      </h1>
+
+      {description && (
+        <p class="text-lg text-[var(--text-secondary)] mt-3">
+          {description}
+        </p>
+      )}
+
+      {resolvedHeroImage && (
+        <div class="mt-6 rounded-xl overflow-hidden border border-[var(--border-color)] max-h-96">
+          <img src={resolvedHeroImage} alt={title} class="w-full h-full object-cover" />
+        </div>
+      )}
+    </header>
+
+    <div class="article-content">
+      <slot />
+    </div>
+
+    <footer class="mt-12 pt-6 border-t border-[var(--border-color)] not-prose flex items-center justify-between text-sm">
+      <a href={getRelativePath('/blog')} class="text-[var(--accent-color)] hover:underline font-medium">
+        &larr; Back to Blog
+      </a>
+      <div class="text-[var(--text-muted)] text-xs">
+        Written by Anuradha Wickramarachchi
+      </div>
+    </footer>
+  </article>
+</BaseLayout>
