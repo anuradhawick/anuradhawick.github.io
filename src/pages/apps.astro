@@ -73,13 +73,22 @@ import ToolCard from '../components/ToolCard.astro';
         <p class="text-sm text-(--text-secondary)">Highlighted desktop, web, and CLI applications</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <ToolCard
           title="Clipper"
           description="A versatile clipboard management and note-taking application designed specifically for developers. Runs natively on macOS and Linux, leveraging Tauri for a lightweight and secure footprint."
           image="/assets/uploads/icon.png"
           githubUrl="https://github.com/anuradhawick/clipper"
           tags={["Tauri", "Rust", "macOS", "Linux"]}
+          featured={true}
+        />
+        <ToolCard
+          title="IceBreak"
+          description="A shared group break timer to coordinate breaks seamlessly across time zones. Built as a full-stack Go and React production template deployed on AWS using Terraform."
+          image="/assets/uploads/icebreak-logo.png"
+          githubUrl="https://github.com/anuradhawick/icebreak"
+          liveUrl="https://icebreak.anuradhawick.com"
+          tags={["Go", "React", "Terraform", "AWS"]}
           featured={true}
         />
         <ToolCard
