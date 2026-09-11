@@ -1,6 +1,6 @@
 # Anuradha Wickramarachchi - Personal Website
 
-A clean, minimalist, high-performance static website built with **[Astro](https://astro.build/)** and styled with **Tailwind CSS**. Migrated from WordPress with 100% self-contained local assets, SEO optimizations, Schema.org JSON-LD structured data, and automated CI/CD deployment via **GitHub Pages**.
+A clean, minimalist, high-performance static website built with **[Astro](https://astro.build/)** and styled with **Tailwind CSS**. Features 100% self-contained local assets, SEO optimizations, Schema.org JSON-LD structured data, and automated CI/CD deployment via **GitHub Pages**.
 
 ---
 
@@ -111,12 +111,3 @@ When you are ready to point your custom domain `anuradhawick.com` to GitHub Page
      - `185.199.111.153`
    - Configure a **CNAME record** for `www` pointing to `<your-username>.github.io`.
 4. Check **Enforce HTTPS** in GitHub Pages settings.
-
----
-
-## Preserved Legacy WordPress URLs
-
-To prevent breaking existing search engine rankings and external links:
-- Old date-based post URLs (e.g. `/2024/02/08/ai-stuff/` and `/2022/09/04/travel/`) automatically redirect to `/blog/<slug>/`.
-- Legacy URL `/software-tools/` automatically redirects to `/apps/`.
-- All historical `/wp-content/uploads/` paths continue to resolve directly with HTTP 200.
