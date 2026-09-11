@@ -8,8 +8,6 @@ categories: ["Blog"]
 draft: false
 ---
 
-[![Photo by Andrew Neel on Unsplash](/assets/uploads/img_0060.jpg)](https://unsplash.com/@andrewtneel?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
-
 *Photo by [Andrew Neel](https://unsplash.com/@andrewtneel) on [Unsplash](https://unsplash.com)*
 
 My Sinhalese and English poetry and romantic write-ups:
