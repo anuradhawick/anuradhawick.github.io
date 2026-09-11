@@ -6,6 +6,7 @@ Scans Anuradha Wickramarachchi's published software packages across:
 - PyPI (Python packages)
 - Bioconda / Anaconda
 - GitHub (recent non-fork repositories)
+- Starter Templates & Blueprints for src/pages/templates.astro
 """
 
 import sys
@@ -16,6 +17,67 @@ import urllib.error
 USER_AGENT = "anuradhawick-site-sync (info@anuradhawick.com)"
 CRATES_USER_ID = "266446"
 GITHUB_USER = "anuradhawick"
+
+KNOWN_TEMPLATES = [
+    {
+        "name": "icebreak",
+        "category": "Full-Stack & Web Applications",
+        "badge": "Go · React · AWS Terraform",
+        "url": "https://github.com/anuradhawick/icebreak",
+        "live": "https://icebreak.anuradhawick.com",
+        "purpose": "Full-stack Go backend & React frontend with AWS Terraform infrastructure"
+    },
+    {
+        "name": "tf_template",
+        "category": "Full-Stack & Web Applications",
+        "badge": "Angular · Python · Docker · AWS Terraform",
+        "url": "https://github.com/anuradhawick/tf_template",
+        "purpose": "Angular frontend + Python Lambda & Docker container microservice on AWS"
+    },
+    {
+        "name": "avcarcare.com.au",
+        "category": "Full-Stack & Web Applications",
+        "badge": "React · Vercel · Supabase · Quote System",
+        "url": "https://github.com/anuradhawick/avcarcare.com.au",
+        "live": "https://avcarcare.com.au",
+        "purpose": "Service provider web template with Vercel, Supabase, and dynamic quote estimator"
+    },
+    {
+        "name": "rs_template",
+        "category": "Cloud & Serverless Infrastructure",
+        "badge": "Rust · AWS Lambda · Terraform · cargo-lambda",
+        "url": "https://github.com/anuradhawick/rs_template",
+        "purpose": "Cold-start-free Rust Lambda function with lambdamux routing and Terraform"
+    },
+    {
+        "name": "aws-lambda-serverless-boilerplate",
+        "category": "Cloud & Serverless Infrastructure",
+        "badge": "Python · AWS Lambda · Serverless Framework",
+        "url": "https://github.com/anuradhawick/aws-lambda-serverless-boilerplate",
+        "purpose": "Battle-tested Python serverless boilerplate for rapid prototyping"
+    },
+    {
+        "name": "rs-avl",
+        "category": "Database Engines & Low-Level Toolkits",
+        "badge": "Rust · Data Structures · Storage Engines · PyPI",
+        "url": "https://github.com/anuradhawick/rs-avl",
+        "purpose": "Generic AVL tree for database development, indexing, and ordered key-value storage"
+    },
+    {
+        "name": "sqlite-functions",
+        "category": "Database Engines & Low-Level Toolkits",
+        "badge": "Rust · SQLite · UDFs · CLI",
+        "url": "https://github.com/anuradhawick/sqlite-functions",
+        "purpose": "Toolkit for authoring custom Rust user-defined functions for SQLite and CLIs"
+    },
+    {
+        "name": "casechange",
+        "category": "Package Publishing & Developer Blueprints",
+        "badge": "Python · PyPI · Packaging · Poetry",
+        "url": "https://github.com/anuradhawick/casechange",
+        "purpose": "Modern reference starter for structuring, building, and publishing Python libraries to PyPI"
+    }
+]
 
 def fetch_json(url, custom_headers=None):
     headers = {"User-Agent": USER_AGENT}
@@ -111,10 +173,10 @@ def main():
         print(f"  • {r['name']} ({r['language'] or 'Unknown'}, {r['stars']}★): {desc}")
         print(f"    Pushed: {r['pushed_at'][:10]} | URL: {r['url']}")
 
-    # 3. Check candidate PyPI packages (known + repo names)
+    # 3. Check candidate PyPI packages
     candidates = list(set([
         "avldb", "s3-avldb", "pykmertools", "cogent3-pykmertools",
-        "rs-avl", "rsbio-seq", "casechange"
+        "rs-avl", "rsbio-seq", "casechange", "casechange_wic"
     ] + [r["name"].lower() for r in repos[:20]]))
     pypi_pkgs = get_pypi_packages(candidates)
     print(f"\n=== PyPI Packages ({len(pypi_pkgs)} found) ===")
@@ -129,11 +191,19 @@ def main():
         print(f"  • {b['name']} (v{b['latest_version']}): {b['summary']}")
         print(f"    URL: {b['conda_url']}")
 
+    # 5. Templates & Starter Blueprints
+    print(f"\n=== Templates & Starters ({len(KNOWN_TEMPLATES)} audited) ===")
+    for t in KNOWN_TEMPLATES:
+        print(f"  • [{t['category']}] {t['name']} ({t['badge']})")
+        print(f"    Purpose: {t['purpose']}")
+        print(f"    Repo: {t['url']}")
+
     # Summary
     result = {
         "crates": crates,
         "pypi": pypi_pkgs,
         "bioconda": bioconda,
+        "templates": KNOWN_TEMPLATES,
         "recent_github": repos[:20]
     }
     

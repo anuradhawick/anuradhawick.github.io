@@ -1,121 +1,284 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getRelativePath } from '../utils/paths';
+
+interface TemplateItem {
+  title: string;
+  badge: string;
+  badgeColor: string;
+  description: string;
+  githubUrl: string;
+  liveUrl?: string;
+  crateUrl?: string;
+  pypiUrl?: string;
+  image?: string;
+  highlights?: string[];
+}
+
+interface TemplateCategory {
+  name: string;
+  description: string;
+  templates: TemplateItem[];
+}
+
+const categories: TemplateCategory[] = [
+  {
+    name: 'Full-Stack & Web Applications',
+    description: 'Complete full-stack starter templates with frontend, backend, and automated cloud deployments.',
+    templates: [
+      {
+        title: 'IceBreak — Full-Stack Go & React Template',
+        badge: 'Go · React · AWS Terraform',
+        badgeColor: 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400',
+        description: 'A production-ready full-stack web application blueprint demonstrating how to deploy a Go backend service and a modern React frontend to AWS using Terraform. Features automated CI/CD workflows, infrastructure-as-code automation, and powers a real-world synchronized group break timer application.',
+        githubUrl: 'https://github.com/anuradhawick/icebreak',
+        liveUrl: 'https://icebreak.anuradhawick.com',
+        image: '/assets/uploads/icebreak-logo.png',
+        highlights: [
+          'Go HTTP service with structured concurrency',
+          'React frontend configured with Vite & Tailwind CSS',
+          'Complete AWS infrastructure deployment via Terraform',
+          'Automated CI/CD deployment via GitHub Actions'
+        ]
+      },
+      {
+        title: 'Template Web Server',
+        badge: 'Angular · Python · Docker · AWS Terraform',
+        badgeColor: 'bg-sky-500/10 text-sky-600 dark:text-sky-400',
+        description: 'A comprehensive architecture template for deploying web applications to AWS using Terraform. Includes an Angular web frontend and two starter backend Lambdas: one using pure Python for light tasks, and another using Docker container images to deploy a containerized Python microservice.',
+        githubUrl: 'https://github.com/anuradhawick/tf_template',
+        image: '/assets/uploads/image-1.png',
+        highlights: [
+          'Angular single-page application frontend',
+          'Serverless Python Lambda + containerized Docker microservice',
+          'Full AWS Terraform provisioning (S3, CloudFront, API Gateway, Lambda)',
+          'Automated build & packaging scripts'
+        ]
+      },
+      {
+        title: 'AV Car Care — Service Provider Web Template',
+        badge: 'React · Vercel · Supabase · Quote System',
+        badgeColor: 'bg-purple-500/10 text-purple-600 dark:text-purple-400',
+        description: 'A commercial-grade service provider and small business web template built with modern React, hosted on Vercel with a Supabase database backend. Designed for service businesses requiring online booking, service catalogs, and an interactive customer quote estimator.',
+        githubUrl: 'https://github.com/anuradhawick/avcarcare.com.au',
+        liveUrl: 'https://avcarcare.com.au',
+        highlights: [
+          'Vercel edge deployment with fast global content delivery',
+          'Supabase PostgreSQL integration for customer requests and quotes',
+          'Interactive multi-step service quote estimation form',
+          'SEO-optimized responsive UI with modern typography'
+        ]
+      }
+    ]
+  },
+  {
+    name: 'Cloud & Serverless Infrastructure',
+    description: 'Infrastructure-as-code blueprints and low-latency serverless templates.',
+    templates: [
+      {
+        title: 'Rust AWS Lambda Template',
+        badge: 'Rust · AWS Lambda · Terraform · cargo-lambda',
+        badgeColor: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400',
+        description: 'A high-performance Rust-based AWS Lambda starter, managed using cargo-lambda and deployed via Terraform. Incorporates the lambdamux routing crate for express-style declarative route declarations with zero runtime overhead and minimal cold starts.',
+        githubUrl: 'https://github.com/anuradhawick/rs_template',
+        crateUrl: 'https://crates.io/crates/lambdamux',
+        image: '/assets/uploads/image.png',
+        highlights: [
+          'Sub-millisecond Rust execution runtime with zero cold starts',
+          'Declarative HTTP routing powered by the lambdamux macro crate',
+          'Automated local building with cargo-lambda',
+          'Modular Terraform modules for Lambda, IAM, and API Gateway'
+        ]
+      },
+      {
+        title: 'AWS Lambda Serverless Boilerplate',
+        badge: 'Python · AWS Lambda · Serverless Framework',
+        badgeColor: 'bg-amber-500/10 text-amber-600 dark:text-amber-400',
+        description: 'A simplistic, battle-tested Python serverless boilerplate for rapid prototyping and cloud web service deployment. Powers microservices and real-world production projects like vinyl.lk.',
+        githubUrl: 'https://github.com/anuradhawick/aws-lambda-serverless-boilerplate',
+        highlights: [
+          'Fast local development and offline emulation',
+          'Standardized CORS and error-handling utilities',
+          'Lightweight Python runtime setup with dependency packaging',
+          'Single-command deployment to AWS'
+        ]
+      }
+    ]
+  },
+  {
+    name: 'Database Engines & Low-Level Toolkits',
+    description: 'Data structures, storage engine components, and custom database extension templates.',
+    templates: [
+      {
+        title: 'rs-avl — Database Development Starter',
+        badge: 'Rust · Data Structures · Storage Engines · PyPI',
+        badgeColor: 'bg-rose-500/10 text-rose-600 dark:text-rose-400',
+        description: 'A generic, high-performance AVL tree implementation in Rust designed specifically for database storage engine development, secondary indexing, and ordered key-value lookup. Serves as the foundational indexing layer behind the avldb document database.',
+        githubUrl: 'https://github.com/anuradhawick/rs-avl',
+        crateUrl: 'https://crates.io/crates/rs-avl',
+        pypiUrl: 'https://pypi.org/project/rs-avl/',
+        highlights: [
+          'Self-balancing AVL tree with logarithmic search, insert, and delete',
+          'Range query iterators for indexed range scanning',
+          'Ceiling, floor, and nearest-neighbor key lookup methods',
+          'Exposed with zero-copy Python bindings on PyPI'
+        ]
+      },
+      {
+        title: 'sqlite-functions — SQLite Extension Starter',
+        badge: 'Rust · SQLite · UDFs · CLI',
+        badgeColor: 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400',
+        description: 'A clean toolkit and starter template for authoring custom Rust user-defined functions (UDFs) and extensions for SQLite. Simplifies building high-performance numerical, analytical, and cryptographic functions callable directly inside SQL queries and CLI tools.',
+        githubUrl: 'https://github.com/anuradhawick/sqlite-functions',
+        crateUrl: 'https://crates.io/crates/sqlite-functions',
+        highlights: [
+          'Ergonomic macros for registering custom scalar and aggregate functions',
+          'Safe memory boundary abstractions across SQLite C APIs and Rust',
+          'Supports standalone CLI tools with bundled SQLite functions',
+          'Published to crates.io for instant inclusion in Rust projects'
+        ]
+      }
+    ]
+  },
+  {
+    name: 'Package Publishing & Developer Blueprints',
+    description: 'Reference implementations for package structure, automated testing, and distribution.',
+    templates: [
+      {
+        title: 'CaseChange — PyPI Package Publication Starter',
+        badge: 'Python · PyPI · Packaging · Poetry',
+        badgeColor: 'bg-teal-500/10 text-teal-600 dark:text-teal-400',
+        description: 'A reference starter template demonstrating how to structure, test, build, and publish a modern Python library to PyPI. Features automated semantic versioning, distribution packaging, and unit test suites.',
+        githubUrl: 'https://github.com/anuradhawick/casechange',
+        pypiUrl: 'https://pypi.org/project/casechange_wic/',
+        highlights: [
+          'Clean, standard Python package directory layout',
+          'Wheel and source distribution (sdist) build configuration',
+          'Pre-configured PyPI metadata, licensing, and documentation',
+          'Ideal reference starting point for first-time or rapid package publishing'
+        ]
+      }
+    ]
+  }
+];
 ---
 
 <BaseLayout
   title="Templates & Starters"
-  description="Production-grade cloud, infrastructure, and serverless templates created by Anuradha Wickramarachchi."
+  description="Production-grade cloud, infrastructure, full-stack, and database starter templates created by Anuradha Wickramarachchi."
 >
-  <div class="space-y-10">
+  <div class="space-y-12">
     <div class="pb-6 border-b border-(--border-color)">
       <h1 class="text-3xl sm:text-4xl font-extrabold text-(--text-primary)">
         Templates &amp; Starters
       </h1>
       <p class="text-base sm:text-lg text-(--text-secondary) mt-2">
-        Reusable infrastructure-as-code blueprints and project templates to kickstart cloud and web deployments.
+        Reusable infrastructure-as-code blueprints, full-stack web applications, database extensions, and package publishing starters.
       </p>
     </div>
 
-    <!-- Template 1: Rust AWS Lambda Template -->
-    <div class="p-6 rounded-2xl border border-(--border-color) bg-(--card-bg) space-y-4">
-      <div class="flex flex-col md:flex-row gap-6 items-start">
-        <div class="w-full md:w-1/2 rounded-xl overflow-hidden border border-(--border-color) bg-(--bg-tertiary)">
-          <img src={getRelativePath('/assets/uploads/image.png')} alt="Rust AWS Lambda Template" class="w-full h-auto object-cover" />
+    {categories.map((cat) => (
+      <section class="space-y-6">
+        <div class="border-b border-(--border-color) pb-3">
+          <h2 class="text-2xl font-bold text-(--text-primary)">{cat.name}</h2>
+          <p class="text-sm text-(--text-secondary) mt-1">{cat.description}</p>
         </div>
-        <div class="flex-1 space-y-3">
-          <div class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
-            Rust &middot; AWS Lambda &middot; Terraform
-          </div>
-          <h2 class="text-2xl font-bold text-(--text-primary)">Rust AWS Lambda Template</h2>
-          <p class="text-sm text-(--text-secondary) leading-relaxed">
-            This repository contains a Rust-based AWS Lambda function, managed using the <code>cargo-lambda</code> tool and deployed via Terraform. It provides an optimized starting point for deploying ultra-fast, cold-start-free serverless functions on AWS.
-          </p>
-          <div class="pt-2">
-            <a
-              href="https://github.com/anuradhawick/rs_template"
-              target="_blank"
-              rel="noreferrer noopener"
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-(--accent-color) text-white text-xs font-semibold hover:opacity-90 transition-opacity"
-            >
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
-              </svg>
-              View on GitHub (rs_template)
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Template 2: Template Web Server -->
-    <div class="p-6 rounded-2xl border border-(--border-color) bg-(--card-bg) space-y-4">
-      <div class="flex flex-col md:flex-row gap-6 items-start">
-        <div class="w-full md:w-1/2 rounded-xl overflow-hidden border border-(--border-color) bg-(--bg-tertiary)">
-          <img src={getRelativePath('/assets/uploads/image-1.png')} alt="Template Web Server" class="w-full h-auto object-cover" />
-        </div>
-        <div class="flex-1 space-y-3">
-          <div class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-500/10 text-sky-600 dark:text-sky-400">
-            Angular &middot; Python &middot; Docker &middot; AWS Terraform
-          </div>
-          <h2 class="text-2xl font-bold text-(--text-primary)">Template Web Server</h2>
-          <p class="text-sm text-(--text-secondary) leading-relaxed">
-            A comprehensive template for deploying web applications to AWS using Terraform. Includes an Angular web frontend and two starter backend Lambdas: one using pure Python, and another using Docker container images to deploy a Python microservice.
-          </p>
-          <div class="pt-2">
-            <a
-              href="https://github.com/anuradhawick/tf_template"
-              target="_blank"
-              rel="noreferrer noopener"
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-(--accent-color) text-white text-xs font-semibold hover:opacity-90 transition-opacity"
-            >
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
-              </svg>
-              View on GitHub (tf_template)
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+        <div class="space-y-6">
+          {cat.templates.map((tpl) => (
+            <div class="p-6 rounded-2xl border border-(--border-color) bg-(--card-bg) space-y-4 hover:border-(--accent-color)/40 transition-all shadow-sm">
+              <div class="flex flex-col md:flex-row gap-6 items-start">
+                {tpl.image && (
+                  <div class="w-full md:w-5/12 rounded-xl overflow-hidden border border-(--border-color) bg-(--bg-tertiary) p-3 flex items-center justify-center shrink-0">
+                    <img
+                      src={getRelativePath(tpl.image)}
+                      alt={tpl.title}
+                      class="w-full h-44 object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+                <div class="flex-1 space-y-3">
+                  <div class={`inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold ${tpl.badgeColor}`}>
+                    {tpl.badge}
+                  </div>
+                  <h3 class="text-xl sm:text-2xl font-bold text-(--text-primary)">
+                    {tpl.title}
+                  </h3>
+                  <p class="text-sm text-(--text-secondary) leading-relaxed">
+                    {tpl.description}
+                  </p>
 
-    <!-- Template 3: IceBreak Full-Stack Go Template -->
-    <div class="p-6 rounded-2xl border border-(--border-color) bg-(--card-bg) space-y-4">
-      <div class="flex flex-col md:flex-row gap-6 items-start">
-        <div class="w-full md:w-1/2 rounded-xl overflow-hidden border border-(--border-color) bg-(--bg-tertiary) p-4 flex items-center justify-center">
-          <img src={getRelativePath('/assets/uploads/icebreak-logo.png')} alt="IceBreak Logo" class="w-48 h-48 object-contain" />
+                  {tpl.highlights && tpl.highlights.length > 0 && (
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-1 text-xs text-(--text-secondary)">
+                      {tpl.highlights.map((item) => (
+                        <li class="flex items-center gap-2">
+                          <svg class="w-3.5 h-3.5 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                          </svg>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  <div class="pt-3 flex flex-wrap items-center gap-3 text-xs font-semibold">
+                    {tpl.githubUrl && (
+                      <a
+                        href={tpl.githubUrl}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-(--accent-color) text-white hover:opacity-90 transition-opacity"
+                      >
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+                        </svg>
+                        GitHub
+                      </a>
+                    )}
+                    {tpl.liveUrl && (
+                      <a
+                        href={tpl.liveUrl}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-(--border-color) bg-(--bg-secondary) hover:border-(--accent-color) transition-colors text-(--text-primary)"
+                      >
+                        Live Demo &rarr;
+                      </a>
+                    )}
+                    {tpl.crateUrl && (
+                      <a
+                        href={tpl.crateUrl}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-(--border-color) bg-(--bg-secondary) text-amber-600 dark:text-amber-400 hover:border-amber-500/50 transition-colors"
+                      >
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                        </svg>
+                        crates.io
+                      </a>
+                    )}
+                    {tpl.pypiUrl && (
+                      <a
+                        href={tpl.pypiUrl}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-(--border-color) bg-(--bg-secondary) text-sky-600 dark:text-sky-400 hover:border-sky-500/50 transition-colors"
+                      >
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                        </svg>
+                        PyPI
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-        <div class="flex-1 space-y-3">
-          <div class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
-            Go &middot; React &middot; AWS Terraform
-          </div>
-          <h2 class="text-2xl font-bold text-(--text-primary)">IceBreak &mdash; Full-Stack Go &amp; React Template</h2>
-          <p class="text-sm text-(--text-secondary) leading-relaxed">
-            A production-ready full-stack web application template demonstrating how to deploy a Go backend service and a modern React frontend to AWS using Terraform. Features automated CI/CD workflows, infrastructure-as-code automation, and powers a real-world synchronized group break timer application.
-          </p>
-          <div class="pt-2 flex flex-wrap items-center gap-3">
-            <a
-              href="https://github.com/anuradhawick/icebreak"
-              target="_blank"
-              rel="noreferrer noopener"
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-(--accent-color) text-white text-xs font-semibold hover:opacity-90 transition-opacity"
-            >
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
-              </svg>
-              View on GitHub (icebreak)
-            </a>
-            <a
-              href="https://icebreak.anuradhawick.com"
-              target="_blank"
-              rel="noreferrer noopener"
-              class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-(--border-color) bg-(--bg-secondary) hover:border-(--accent-color) transition-colors text-xs font-semibold text-(--text-primary)"
-            >
-              Live Demo (icebreak.anuradhawick.com) &rarr;
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+      </section>
+    ))}
   </div>
 </BaseLayout>

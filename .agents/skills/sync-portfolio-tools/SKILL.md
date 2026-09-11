@@ -45,6 +45,7 @@ This script queries:
 
 ### 2. Categorize Discovered Projects
 
+#### A. Applications & Tools (`src/pages/apps.astro`)
 Map each package or tool into the appropriate section in `src/pages/apps.astro`:
 
 | Category | Typical Repos / Packages | Target Section |
@@ -53,15 +54,23 @@ Map each package or tool into the appropriate section in `src/pages/apps.astro`:
 | **Rust Crates** | Published to crates.io (e.g. `lambdamux`, `rs-avl`, `sqlite-functions`) | `Published Rust Crates (crates.io)` |
 | **Python Packages** | Published to PyPI (e.g. `avldb`, `s3-avldb`, `cogent3-pykmertools`, `rsbio-seq`) | `Python & Database Packages (PyPI)` |
 | **Metagenomics & Genomics** | Algorithmic bioinformatics research (`MetaBCC-LR`, `LRBinner`, `OBLR`, `Seq2Vec`, `Seq2CovVec`) | `Metagenomics & Plasmid Recovery` |
-| **Utilities, GPU & IoT** | Microcontroller firmware, CUDA kernels, WebAssembly, templates (`kmertools-wasm`, `CUDA-k-mer-counting`, `M5StickC`) | `Computer Vision, GPU, WASM & Embedded IoT` |
+| **Utilities, GPU & IoT** | Microcontroller firmware, CUDA kernels, WebAssembly, utilities (`kmertools-wasm`, `CUDA-k-mer-counting`, `M5StickC`) | `Computer Vision, GPU, WASM & Embedded IoT` |
 
-If a repository is a starter template or cloud blueprint (e.g. `icebreak`, `rs_template`, `tf_template`), also audit **`src/pages/templates.astro`**.
+#### B. Starter Templates & Blueprints (`src/pages/templates.astro`)
+When a repository is a starter template, reference boilerplate, or reusable architecture, categorize it in `src/pages/templates.astro`:
+
+| Category | Description | Repos / Examples |
+| :--- | :--- | :--- |
+| **Full-Stack & Web Applications** | Complete starter templates with frontend, backend, and cloud deployment | `icebreak` (Go+React+Terraform), `tf_template` (Angular+Python+Docker+Terraform), `avcarcare.com.au` (React+Vercel+Supabase) |
+| **Cloud & Serverless Infrastructure** | Low-latency serverless templates and infrastructure-as-code | `rs_template` (Rust Lambda + lambdamux), `aws-lambda-serverless-boilerplate` (Python Serverless) |
+| **Database Engines & Low-Level Toolkits** | Storage engine components, data structures, and database extensions | `rs-avl` (AVL tree storage starter), `sqlite-functions` (Rust SQLite UDF extension starter) |
+| **Package Publishing & Developer Blueprints** | Reference starter implementations for package structure and distribution | `casechange` (PyPI package publishing starter) |
 
 ---
 
 ### 3. Fetch Logos or Assets (If Applicable)
 
-If a new signature application has a dedicated logo in its repository (e.g. `logo.png` or `public/icon.png`):
+If a new signature application or template has a dedicated logo or visual asset in its repository (e.g. `logo.png` or `public/icon.png`):
 1. Fetch and store the image locally in `public/assets/uploads/<tool-name>-logo.png`.
 2. Reference the asset via `image="/assets/uploads/<tool-name>-logo.png"`.
 
@@ -69,8 +78,8 @@ If a new signature application has a dedicated logo in its repository (e.g. `log
 
 ### 4. Update Astro Pages
 
-Add or update the `<ToolCard />` component in `src/pages/apps.astro`. Use the available props:
-
+#### Updating `src/pages/apps.astro`
+Add or update `<ToolCard />` components:
 ```astro
 <ToolCard
   title="PackageName"
@@ -84,6 +93,23 @@ Add or update the `<ToolCard />` component in `src/pages/apps.astro`. Use the av
   tags={["Rust", "AWS", "crates.io"]}
   featured={false}
 />
+```
+
+#### Updating `src/pages/templates.astro`
+Add entries to the `categories` array conforming to the `TemplateItem` TypeScript interface:
+```typescript
+interface TemplateItem {
+  title: string;
+  badge: string;
+  badgeColor: string; // Tailwind color classes, e.g. 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400'
+  description: string;
+  githubUrl: string;
+  liveUrl?: string;
+  crateUrl?: string;
+  pypiUrl?: string;
+  image?: string;
+  highlights?: string[];
+}
 ```
 
 Keep Tailwind CSS v4 styling rules intact:
