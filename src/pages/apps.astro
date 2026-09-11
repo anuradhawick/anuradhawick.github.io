@@ -5,7 +5,7 @@ import ToolCard from '../components/ToolCard.astro';
 
 <BaseLayout
   title="Software & Tools"
-  description="Open source software, bioinformatics algorithms, desktop applications, and developer tools created by Anuradha Wickramarachchi."
+  description="Open source software, published Rust crates, PyPI packages, Bioconda tools, and bioinformatics algorithms created by Anuradha Wickramarachchi."
 >
   <div class="space-y-12">
     <!-- Header -->
@@ -14,15 +14,63 @@ import ToolCard from '../components/ToolCard.astro';
         Software & Tools
       </h1>
       <p class="text-base sm:text-lg text-(--text-secondary) mt-2">
-        A collection of open source software, desktop applications, bioinformatics algorithms, and developer utilities.
+        A collection of open source software, published Rust crates, PyPI packages, bioinformatics algorithms, and developer utilities.
       </p>
+
+      <!-- Published Registries Quick Access -->
+      <div class="flex flex-wrap items-center gap-3 mt-5 pt-2">
+        <a
+          href="https://crates.io/users/anuradhawick"
+          target="_blank"
+          rel="noreferrer noopener"
+          class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-(--border-color) bg-(--bg-secondary) hover:border-amber-500/50 hover:bg-amber-500/5 transition-colors text-xs font-semibold text-(--text-primary)"
+        >
+          <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+          </svg>
+          crates.io Profile
+        </a>
+        <a
+          href="https://pypi.org/user/anuradhawick/"
+          target="_blank"
+          rel="noreferrer noopener"
+          class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-(--border-color) bg-(--bg-secondary) hover:border-sky-500/50 hover:bg-sky-500/5 transition-colors text-xs font-semibold text-(--text-primary)"
+        >
+          <svg class="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+          </svg>
+          PyPI Profile
+        </a>
+        <a
+          href="https://anaconda.org/channels/bioconda/packages/kmertools/overview"
+          target="_blank"
+          rel="noreferrer noopener"
+          class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-(--border-color) bg-(--bg-secondary) hover:border-emerald-500/50 hover:bg-emerald-500/5 transition-colors text-xs font-semibold text-(--text-primary)"
+        >
+          <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+          </svg>
+          Bioconda Package
+        </a>
+        <a
+          href="https://github.com/anuradhawick"
+          target="_blank"
+          rel="noreferrer noopener"
+          class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-(--border-color) bg-(--bg-secondary) hover:border-(--accent-color) transition-colors text-xs font-semibold text-(--text-primary)"
+        >
+          <svg class="w-4 h-4 text-(--accent-color)" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+          </svg>
+          GitHub Profile
+        </a>
+      </div>
     </div>
 
     <!-- Signature Tools -->
     <section>
       <div class="mb-6">
-        <h2 class="text-2xl font-bold text-(--text-primary)">Signature Tools</h2>
-        <p class="text-sm text-(--text-secondary)">Highlighted desktop and web applications</p>
+        <h2 class="text-2xl font-bold text-(--text-primary)">Signature Tools &amp; Applications</h2>
+        <p class="text-sm text-(--text-secondary)">Highlighted desktop, web, and CLI applications</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -36,15 +84,17 @@ import ToolCard from '../components/ToolCard.astro';
         />
         <ToolCard
           title="Kmertools"
-          description="A k-mer based feature extraction tool designed to support metagenomics analysis and fast sequence clustering. Enables high-throughput processing of large genomic datasets."
+          description="A high-performance k-mer based feature extraction tool designed for metagenomics analysis, DNA vectorization, and fast genomic sequence mining. Available via Cargo, Bioconda, and PyPI."
           image="/assets/uploads/kmertools-1.jpg"
           githubUrl="https://github.com/anuradhawick/kmertools"
-          tags={["Bioinformatics", "k-mers", "Genomics"]}
+          condaUrl="https://anaconda.org/channels/bioconda/packages/kmertools/overview"
+          pypiUrl="https://pypi.org/project/pykmertools/"
+          tags={["Rust", "Bioinformatics", "Bioconda", "k-mers"]}
           featured={true}
         />
         <ToolCard
           title="TypeFaster"
-          description="A minimalist, snappy typing training web application created to help you hone your touch-typing speed and accuracy."
+          description="A minimalist, snappy typing training web application created to help you hone your touch-typing speed and accuracy. Built with Angular and deployed via Terraform on AWS."
           image="/assets/uploads/logo.webp"
           githubUrl="https://github.com/anuradhawick/typefaster"
           liveUrl="https://typefaster.anuradhawick.com"
@@ -54,10 +104,92 @@ import ToolCard from '../components/ToolCard.astro';
       </div>
     </section>
 
+    <!-- Published Rust Crates (crates.io) -->
+    <section class="pt-6 border-t border-(--border-color)">
+      <div class="mb-6">
+        <div class="flex items-center gap-2">
+          <svg class="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+          </svg>
+          <h2 class="text-2xl font-bold text-(--text-primary)">Published Rust Crates (crates.io)</h2>
+        </div>
+        <p class="text-sm text-(--text-secondary) mt-1">Open source crates published to the Rust community on crates.io</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <ToolCard
+          title="lambdamux"
+          description="AWS Lambda HTTP routing library with attribute macros and API Gateway adapters. Enables declarative route mapping with zero runtime overhead on serverless Lambdas."
+          githubUrl="https://github.com/anuradhawick/rs_template"
+          crateUrl="https://crates.io/crates/lambdamux"
+          tags={["Rust", "AWS Lambda", "crates.io", "Macros"]}
+        />
+        <ToolCard
+          title="rs-avl"
+          description="A generic, high-performance AVL tree implementation in Rust with range queries, floor/ceiling search, and traversal iterators. Also published to PyPI."
+          githubUrl="https://github.com/anuradhawick/rs-avl"
+          crateUrl="https://crates.io/crates/rs-avl"
+          pypiUrl="https://pypi.org/project/rs-avl/"
+          tags={["Rust", "Data Structures", "crates.io", "PyPI"]}
+        />
+        <ToolCard
+          title="sqlite-functions"
+          description="A lightweight toolkit for authoring SQLite user-defined functions (UDFs) directly in Rust with safe memory abstractions."
+          githubUrl="https://github.com/anuradhawick/sqlite-functions"
+          crateUrl="https://crates.io/crates/sqlite-functions"
+          tags={["Rust", "SQLite", "crates.io", "Database"]}
+        />
+      </div>
+    </section>
+
+    <!-- Python & Database Packages (PyPI) -->
+    <section class="pt-6 border-t border-(--border-color)">
+      <div class="mb-6">
+        <div class="flex items-center gap-2">
+          <svg class="w-6 h-6 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+          </svg>
+          <h2 class="text-2xl font-bold text-(--text-primary)">Python &amp; Database Packages (PyPI)</h2>
+        </div>
+        <p class="text-sm text-(--text-secondary) mt-1">Python libraries and database frameworks published to PyPI</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <ToolCard
+          title="avldb"
+          description="A typed, embedded document database framework built on top of Rust-backed AVL indexes. Fast, extensible, and designed for in-memory and persistent document querying."
+          githubUrl="https://github.com/anuradhawick/avldb"
+          pypiUrl="https://pypi.org/project/avldb/"
+          tags={["Python", "Rust", "Database", "PyPI"]}
+        />
+        <ToolCard
+          title="s3-avldb"
+          description="Cloud-native Amazon S3 storage backend plugin for avldb, enabling serverless embedded database querying directly against S3 object storage."
+          githubUrl="https://github.com/anuradhawick/s3-avldb"
+          pypiUrl="https://pypi.org/project/s3-avldb/"
+          tags={["Python", "AWS S3", "Database", "PyPI"]}
+        />
+        <ToolCard
+          title="cogent3-pykmertools"
+          description="A Cogent3 integration plugin for pykmertools, enabling fast k-mer sequence extraction directly inside Cogent3 computational biology workflows."
+          githubUrl="https://github.com/anuradhawick/cogent3-pykmertools"
+          pypiUrl="https://pypi.org/project/cogent3-pykmertools/"
+          tags={["Python", "Bioinformatics", "Cogent3", "PyPI"]}
+        />
+        <ToolCard
+          title="rsbio-seq"
+          description="A fast and lightweight sequence reading library built as a Python wrapper around the Rust Bio crate for high-throughput genomic parsing."
+          githubUrl="https://github.com/anuradhawick/rsbio-seq"
+          pypiUrl="https://pypi.org/project/rsbio-seq/"
+          tags={["Python", "Rust", "Bioinformatics", "PyPI"]}
+        />
+      </div>
+    </section>
+
     <!-- Research Software & Metagenomics -->
     <section class="pt-6 border-t border-(--border-color)">
       <div class="mb-6">
-        <h2 class="text-2xl font-bold text-(--text-primary)">Metagenomics & Plasmid Recovery</h2>
+        <h2 class="text-2xl font-bold text-(--text-primary)">Metagenomics &amp; Plasmid Recovery</h2>
         <p class="text-sm text-(--text-secondary)">Algorithms and models developed during PhD research at the Australian National University</p>
       </div>
 
@@ -70,8 +202,8 @@ import ToolCard from '../components/ToolCard.astro';
         />
         <ToolCard
           title="LRBinner"
-          description="Unified composition and coverage binning using deep auto-encoders combined with an innovative clustering algorithm for long reads."
-          githubUrl="https://github.com/anuradhawick/lrbinner"
+          description="Unified composition and coverage binning using deep auto-encoders combined with an innovative clustering algorithm for long reads. Published in WABI 2021 and AMB."
+          githubUrl="https://github.com/anuradhawick/LRBinner"
           tags={["Auto-encoders", "Deep Learning", "Binning"]}
         />
         <ToolCard
@@ -86,8 +218,8 @@ import ToolCard from '../components/ToolCard.astro';
     <!-- Vector Processing & Sequence Mining -->
     <section class="pt-6 border-t border-(--border-color)">
       <div class="mb-6">
-        <h2 class="text-2xl font-bold text-(--text-primary)">Sequence Vectorization & High Performance Tools</h2>
-        <p class="text-sm text-(--text-secondary)">Optimized parallel tools using memory-mapped I/O</p>
+        <h2 class="text-2xl font-bold text-(--text-primary)">Sequence Vectorization &amp; High-Performance Tools</h2>
+        <p class="text-sm text-(--text-secondary)">Optimized parallel tools using memory-mapped I/O and GPU acceleration</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -106,14 +238,26 @@ import ToolCard from '../components/ToolCard.astro';
       </div>
     </section>
 
-    <!-- Computer Vision, Cloud & CUDA -->
+    <!-- Computer Vision, Cloud, CUDA & IoT -->
     <section class="pt-6 border-t border-(--border-color)">
       <div class="mb-6">
-        <h2 class="text-2xl font-bold text-(--text-primary)">Computer Vision, Cloud & GPU Optimization</h2>
-        <p class="text-sm text-(--text-secondary)">Developer utilities, serverless templates, and CUDA implementations</p>
+        <h2 class="text-2xl font-bold text-(--text-primary)">Computer Vision, GPU, WASM &amp; Embedded IoT</h2>
+        <p class="text-sm text-(--text-secondary)">Developer utilities, serverless templates, WebAssembly modules, and embedded firmware</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <ToolCard
+          title="kmertools-wasm"
+          description="WebAssembly (WASM) distribution of kmertools, enabling client-side in-browser DNA vectorization and biological sequence analysis."
+          githubUrl="https://github.com/anuradhawick/kmertools-wasm"
+          tags={["WebAssembly", "Rust", "Browser"]}
+        />
+        <ToolCard
+          title="CUDA K-Mer Counting &amp; Algorithms"
+          description="High-performance GPU implementations of k-mer counting, biological data analysis, and the Needleman-Wunsch sequence alignment algorithm."
+          githubUrl="https://github.com/anuradhawick/CUDA-k-mer-counting"
+          tags={["CUDA", "C++", "GPU Computing"]}
+        />
         <ToolCard
           title="Object Annotation Maker"
           description="Automated dataset bootstrapping tool for training object detectors by synthesizing target images across variable backgrounds."
@@ -122,17 +266,18 @@ import ToolCard from '../components/ToolCard.astro';
         />
         <ToolCard
           title="Serverless Boilerplate"
-          description="Simplistic, production-ready AWS Lambda serverless boilerplate for rapid prototyping and cloud web service deployment (used in vinyl.lk)."
+          description="Production-ready AWS Lambda serverless boilerplate for rapid prototyping and cloud web service deployment (used in vinyl.lk)."
           githubUrl="https://github.com/anuradhawick/aws-lambda-serverless-boilerplate"
           tags={["AWS Lambda", "Serverless", "Python"]}
         />
         <ToolCard
-          title="CUDA K-Mer Counting & Algorithms"
-          description="High-performance GPU implementations of k-mer counting, biological data analysis, and the Needleman-Wunsch sequence alignment algorithm."
-          githubUrl="https://github.com/anuradhawick/CUDA-k-mer-counting"
-          tags={["CUDA", "C++", "GPU Computing"]}
+          title="M5StickC Plus 2 Smart Clock"
+          description="Custom embedded IoT smart clock firmware engineered for the M5StickC Plus 2 (ESP32) development board."
+          githubUrl="https://github.com/anuradhawick/M5StickC-Plus-2-Smart-Clock"
+          tags={["ESP32", "IoT", "Embedded C"]}
         />
       </div>
     </section>
   </div>
 </BaseLayout>
+
