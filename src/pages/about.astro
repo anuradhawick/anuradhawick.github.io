@@ -9,17 +9,17 @@ import { getRelativePath } from '../utils/paths';
 >
   <div class="max-w-3xl mx-auto">
     <!-- Header with Profile Photo -->
-    <div class="flex flex-col sm:flex-row items-center gap-6 pb-8 border-b border-[var(--border-color)]">
+    <div class="flex flex-col sm:flex-row items-center gap-6 pb-8 border-b border-(--border-color)">
       <img
         src={getRelativePath('/assets/uploads/me-removebg.png')}
         alt="Anuradha Wickramarachchi"
-        class="w-32 h-32 rounded-2xl border-2 border-[var(--border-color)] p-2 bg-[var(--bg-secondary)] shrink-0 object-contain shadow-sm"
+        class="w-32 h-32 rounded-2xl border-2 border-(--border-color) p-2 bg-(--bg-secondary) shrink-0 object-contain shadow-sm"
       />
       <div>
-        <h1 class="text-3xl font-extrabold text-[var(--text-primary)]">
+        <h1 class="text-3xl font-extrabold text-(--text-primary)">
           Hi! I am Anuradha 😃
         </h1>
-        <p class="text-base text-[var(--text-secondary)] mt-2 leading-relaxed">
+        <p class="text-base text-(--text-secondary) mt-2 leading-relaxed">
           Engineer, Scientist, and Researcher. Software Engineer at AML3D developing algorithms for advanced manufacturing applications (WAAM), former Solutions Architect at CSIRO, and PhD graduate from the Australian National University.
         </p>
       </div>
@@ -30,9 +30,9 @@ import { getRelativePath } from '../utils/paths';
       <a
         href={getRelativePath('/assets/uploads/anu_thesis.pdf')}
         download
-        class="flex items-center justify-center gap-2 p-3 rounded-xl border border-[var(--border-color)] bg-[var(--card-bg)] hover:border-[var(--accent-color)] text-xs font-semibold text-[var(--text-primary)] transition-all shadow-sm"
+        class="flex items-center justify-center gap-2 p-3 rounded-xl border border-(--border-color) bg-(--card-bg) hover:border-(--accent-color) text-xs font-semibold text-(--text-primary) transition-all shadow-sm"
       >
-        <svg class="w-4 h-4 text-[var(--accent-color)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-4 h-4 text-(--accent-color)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
         </svg>
         Download PhD Thesis (PDF)
@@ -41,9 +41,9 @@ import { getRelativePath } from '../utils/paths';
         href="https://cv.anuradhawick.com"
         target="_blank"
         rel="noreferrer noopener"
-        class="flex items-center justify-center gap-2 p-3 rounded-xl border border-[var(--border-color)] bg-[var(--card-bg)] hover:border-[var(--accent-color)] text-xs font-semibold text-[var(--text-primary)] transition-all shadow-sm"
+        class="flex items-center justify-center gap-2 p-3 rounded-xl border border-(--border-color) bg-(--card-bg) hover:border-(--accent-color) text-xs font-semibold text-(--text-primary) transition-all shadow-sm"
       >
-        <svg class="w-4 h-4 text-[var(--accent-color)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-4 h-4 text-(--accent-color)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
         </svg>
         View CV (cv.anuradhawick.com)
@@ -52,9 +52,9 @@ import { getRelativePath } from '../utils/paths';
         href="https://scholar.google.com.au/citations?user=u-rFXwUAAAAJ&hl=en"
         target="_blank"
         rel="noreferrer noopener"
-        class="flex items-center justify-center gap-2 p-3 rounded-xl border border-[var(--border-color)] bg-[var(--card-bg)] hover:border-[var(--accent-color)] text-xs font-semibold text-[var(--text-primary)] transition-all shadow-sm"
+        class="flex items-center justify-center gap-2 p-3 rounded-xl border border-(--border-color) bg-(--card-bg) hover:border-(--accent-color) text-xs font-semibold text-(--text-primary) transition-all shadow-sm"
       >
-        <svg class="w-4 h-4 text-[var(--accent-color)]" fill="currentColor" viewBox="0 0 24 24">
+        <svg class="w-4 h-4 text-(--accent-color)" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
         </svg>
         Google Scholar Profile
@@ -117,18 +117,18 @@ import { getRelativePath } from '../utils/paths';
     </div>
 
     <!-- Travel Callout -->
-    <div class="mt-8 p-6 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-secondary)] flex flex-col sm:flex-row items-center gap-6">
+    <div class="mt-8 p-6 rounded-2xl border border-(--border-color) bg-(--bg-secondary) flex flex-col sm:flex-row items-center gap-6">
       <img src={getRelativePath('/assets/uploads/me_viji.jpg')} alt="Vijini and Anuradha" class="w-36 h-36 rounded-xl object-cover shrink-0" />
       <div>
-        <h3 class="text-lg font-bold text-[var(--text-primary)]">I Love to Travel 🏝</h3>
-        <p class="text-sm text-[var(--text-secondary)] mt-1 leading-relaxed">
+        <h3 class="text-lg font-bold text-(--text-primary)">I Love to Travel 🏝</h3>
+        <p class="text-sm text-(--text-secondary) mt-1 leading-relaxed">
           Vijini and I document our road trips, national park adventures, and overseas explorations on our dedicated travel blog.
         </p>
         <a
           href="https://thearachchistyle.com/"
           target="_blank"
           rel="noreferrer noopener"
-          class="inline-flex items-center gap-2 mt-3 text-xs font-semibold text-[var(--accent-color)] hover:underline"
+          class="inline-flex items-center gap-2 mt-3 text-xs font-semibold text-(--accent-color) hover:underline"
         >
           Visit The Arachchi Style &rarr;
         </a>
