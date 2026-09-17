@@ -55,18 +55,41 @@ const resolvedImage = new URL(image, Astro.site || 'https://anuradhawick.com').h
 
 <!-- Dark Mode Initialization Script (Prevents Flash of Wrong Theme) -->
 <script is:inline>
-  const theme = (() => {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme');
+  function applyTheme() {
+    const stored = typeof localStorage !== 'undefined' ? localStorage.getItem('theme') : null;
+    const isDark = stored
+      ? stored === 'dark'
+      : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.classList.toggle('dark', isDark);
+  }
+
+  applyTheme();
+
+  if (typeof window !== 'undefined' && !window.__themeListenerAttached) {
+    window.__themeListenerAttached = true;
+
+    if (window.matchMedia) {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      const handleSystemThemeChange = (e) => {
+        // When system theme changes, sync theme and clear manual override so OS preference applies
+        if (typeof localStorage !== 'undefined') {
+          localStorage.removeItem('theme');
+        }
+        document.documentElement.classList.toggle('dark', e.matches);
+      };
+
+      if (mediaQuery.addEventListener) {
+        mediaQuery.addEventListener('change', handleSystemThemeChange);
+      }
     }
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
-    return 'light';
-  })();
-  if (theme === 'dark') {
-    document.documentElement.classList.add('dark');
-  } else {
-    document.documentElement.classList.remove('dark');
+
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'theme') {
+        applyTheme();
+      }
+    });
+
+    document.addEventListener('astro:after-swap', applyTheme);
   }
 </script>
+
